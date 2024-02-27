@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>TvFlix</title>
+    
+    <meta name="title" content="TVFlix is the most popular app for movie recommendation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="./global.mjs" defer></script>
+    <script src="./index.mjs" type="module"></script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TvFlix is a popular movie app made by me .">
+    
+    <link rel="shortcut icon" href="./Tvflix/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    
+</head> 
+
+<body>
+    <!-- Search bar --> 
+    <header class="header">
+        <a href="./index.html" class="logo">
+            <img src="./Tvflix/assets/images/logo.svg" width="140" height="32" alt="Tvflix home">
+        </a>
+
+        <div class="search-box" search-box>
+            <div class="search-wrapper" search-wrapper>
+                <input type="text" name="search" aria-label="search movies" placeholder="Search any movies"
+                    class="search-field" search-field autocomplete="off">
+                <img src="./Tvflix/assets/images/search.png" width="24" height="24" alt="search" class="leading-icon">
+            </div>
+            <button class="search-btn" id="search-bttn" search-toggler>
+                <img src="./Tvflix/assets/images/close.png" width="24" height="24" alt="close search box">
+            </button>
+        </div>
+
+        <button class="search-btn" search-toggler menu-close>
+            <img src="./Tvflix/assets/images/search.png" width="24" height="24" alt="open search box">
+        </button>
+
+        <button class="menu-btn" menu-btn menu-toggler>
+            <img src="./Tvflix/assets/images/menu.png" width="24" height="24" alt="open menu" class="menu">
+            <img src="./Tvflix/assets/images/menu-close.png" width="24" height="24" alt="close menu" class="close">
+        </button>
+    </header>
+
+    <main>
+    <!-- Sidebar Html-->
+        <nav class="sidebar" sidebar></nav>
+        <div class="overlay" overlay menu-toggler></div>
+
+        <!-- Main Container Html-->
+        <article class="container" page-content>
+            <!--<section class="banner" aria-label="popular movies">
+                <div class="banner-slider" > 
+                    <div class="slider-item" slider-item>
+                        <img src="./Tvflix/assets/images/slider-banner.jpg" alt="Puss In Boots : The last WIsh" class="img-cover" loading="eager">
+                        <div class="banner-content">
+                            <h2 class="heading">
+                                Puss in Boots : The Last Wish
+                            </h2>
+                            <div class="meta-list">
+                                <div class="meta-item">2022</div>
+                                <div class="meta-item card_badge">7.5</div>
+                            </div>
+                            <p class="genre">Animation, Action, Adventure</p>
+                            <p class="banner-text">Puss in Boots discovers that his passion for adventure has taken its toll: He has bured through eight of nine lives , leaving his with only one life left.</p>
+                            <a href="./detail.html" class="btn">
+                                <img src="./Tvflix/assets/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+                                <span class="span">Watch Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-control">
+                    <div class="control-inner">
+                        <button class="poster-box slider-item">
+                            <img src="./Tvflix/assets/images/slider-control.jpg" alt="Slide to Puss in Boots" loading="lazy" draggable="false" class="img-cover">
+                        </button>
+                    </div>
+                </div>
+            </section> -->
+
+        </article>
+    </main>
+</body>
+
+</html>

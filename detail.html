@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TvFlix</title>
+        <meta name="title" content="TVFlix is the most popular app for movie recommendation">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+
+        <script src="./global.mjs" defer></script>
+        <script src="./detail.mjs" type="module"></script>
+        <script src="./search.mjs" type="module"></script>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="./Tvflix/favicon.svg" type="image/svg+xml">
+
+    </head>
+    <body>
+<!-- Search bar -->        
+        <header class="header">
+            <a href="./home.html" class="logo">
+                <img src="./Tvflix/assets/images/logo.svg" width="140" height="32" alt="Tvflix home">
+            </a>
+
+            <div class="search-box" search-box>
+                <div class="search-wrapper active" search-wrapper>
+                    <input type="text" name="search" aria-label="search movies" placeholder="Search any movies" class="search-field" autocomplete="off">
+                    <img src="./Tvflix/assets/images/search.png" width="24" height="24" alt="search" class="leading-icon">
+                </div>
+                <button class="search-btn" id="search-btn" search-toggler>
+                    <img src="./Tvflix/assets/images/close.png" width="24" height="24" alt="close search box">
+                </button>
+            </div>
+
+            <button class="search-btn" menu-close search-toggler>
+                <img src="./Tvflix/assets/images/search.png" width="24" height="24" alt="open search box">
+            </button>
+
+            <button class="menu-btn" menu-btn menu-toggler>
+                <img src="./Tvflix/assets/images/menu.png" width="24" height="24" alt="open menu" class="menu">
+                <img src="./Tvflix/assets/images/menu-close.png" width="24" height="24" alt="close menu" class="close">
+            </button>
+        </header>
+    <main>
+<!-- Sidebar Html-->
+        <nav class="sidebar" sidebar></nav>
+        <div class="overlay" overlay menu-toggler></div>
+
+<!-- Main Container Html-->
+        <article class="container" page-content>
+        </article>
+    </main>
+
+    </body>
+</html>

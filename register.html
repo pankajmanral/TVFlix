@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background: url("./Tvflix/assets/images/back.jpg");
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+.wrapper{
+    height: 70vh;
+    width: 40vw;
+    background: url("./Tvflix/assets/images/back.jpg");
+    margin-left: 150px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.wrapper img{
+    position: relative;
+    margin-bottom: 20px;
+}
+.wrapper h1{
+    color: white;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    font-size: 2.5rem;
+}
+.wrapper input{
+    height: 50px;
+    width: 350px;
+    padding: 5px 20px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+.wrapper button{
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: 0.5s;
+}
+.wrapper button:hover{
+    transform: translateY(-5px);
+    background: red;
+    color: white;
+}
+.wrapper a{
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+.wrapper a:hover{
+    text-decoration: underline;
+}
+#password{
+    position: absolute;
+    left: 39.5%;
+    top: 63.5%;
+}
+</style>
+
+<body>
+    <form id="MainForm">
+        <div class="wrapper">
+            <img src="./Tvflix/assets/images/logo.png" alt="">
+            <h1>NEW USER</h1>
+            <input type="text" placeholder="Enter Firstname" id="uFirstname">
+            <input type="text" placeholder="Enter LastName" id="uLastname">
+            <input type="text" placeholder="Enter Email" id="uEmail">
+            <input type="password" placeholder="Enter Password" id="uPass">
+            <img id="password" src="./Tvflix/assets/images/pass-hide.svg" alt="">
+            <button type="submit">SIGN UP</button>
+            <a href="./index.html">Already a User</a>
+        </div>
+    </form>
+</body>
+
+<script type="module">
+
+    let eyeicon = document.getElementById("password");
+    let password = document.getElementById("uPass");
+
+    eyeicon.onclick = function(){
+        if(password.type == "password"){
+            password.type = "text";
+            eyeicon.src = "./Tvflix/assets/images/pass-show.svg";
+        }else{
+            password.type = "password";
+            eyeicon.src = "./Tvflix/assets/images/pass-hide.svg";
+        }
+    }
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    
+    const firebaseConfig = {
+        apiKey: "AIzaSyAsGnDdQHDgvIvF2GgxyAjHVZNaaNtmR7E",
+        authDomain: "moviedatabase-6d0bb.firebaseapp.com",
+        projectId: "moviedatabase-6d0bb",
+        storageBucket: "moviedatabase-6d0bb.appspot.com",
+        messagingSenderId: "599431206580",
+        appId: "1:599431206580:web:886999688fcfd10f41e9e1",
+        measurementId: "G-M3TGYRPG8D"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const auth = getAuth(app);
+
+    let userFirstname = document.getElementById("uFirstname");
+    let userLastname = document.getElementById("uLastname");
+    let userEmail = document.getElementById("uEmail");
+    let userPassword = document.getElementById("uPass");
+    let MainForm = document.getElementById("MainForm")
+
+    let RegisterUser = evt => {
+        evt.preventDefault();
+
+        createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
+        .then((credentials) => {
+            set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
+                firstname : userFirstname.value,
+                lastname : userLastname.value
+            });
+            alert("Registration Successful");
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+        })
+    }
+
+    MainForm.addEventListener("submit",RegisterUser);
+    </script>
+
+</html>
